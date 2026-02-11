@@ -1,5 +1,6 @@
 
 <template>
+  <div>
     <video
         ref="video"
         class="w-full h-auto"
@@ -13,6 +14,7 @@
         <audio ref="audio" volume="0.5" src="https://www.soundjay.com/mechanical/camera-shutter-click-08.mp3"></audio>
     </div>
     <div ref="shutter" class="shutter"></div>
+  </div>
 </template>
 
 <style scoped>
@@ -34,7 +36,7 @@
   pointer-events: none;
 
   background-color: black;
-  
+
   left:50%;
   top:50%;
   transform: translate(-50%, -50%);
@@ -89,7 +91,7 @@ export default {
             type: String,
             default: '_vwl_device_id'
         },
-        // if should automatically start and select the best device depending to preferCamerasWithLabel and constraints, or selects first device 
+        // if should automatically start and select the best device depending to preferCamerasWithLabel and constraints, or selects first device
         autoStart: {
             type: Boolean,
             default: true
@@ -273,7 +275,7 @@ export default {
                 if (typeof c.video !== 'object' || c.video === null) {
                     c.video = {}
                 }
-                c.video.deviceId = { exact: deviceId } 
+                c.video.deviceId = { exact: deviceId }
             }
             return c;
         },
