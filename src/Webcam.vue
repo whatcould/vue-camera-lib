@@ -295,7 +295,7 @@ export default {
                 if (this.shutterEffect) {
                     this.$refs.shutter.classList.add('on');
                     setTimeout(() => {
-                        this.$refs.shutter.classList.remove('on');
+                        this.$refs.shutter && this.$refs.shutter.classList.remove('on');
                     }, 30*2+45);
                 }
                 this.$emit('photoTaken', { blob, image_data_url })
