@@ -11,7 +11,7 @@
 
     <canvas ref="canvas" style="display: none;" />
     <div class="hidden">
-        <audio ref="audio" volume="0.5" src="https://www.soundjay.com/mechanical/camera-shutter-click-08.mp3"></audio>
+        <audio ref="audio" volume="0.5" :src="shutterSoundUrl"></audio>
     </div>
     <div ref="shutter" class="shutter"></div>
   </div>
@@ -103,6 +103,14 @@ export default {
         shutterEffect: {
             type: Boolean,
             default: true
+        },
+        shutterSoundUrl: {
+            type: String,
+            default: 'https://www.soundjay.com/mechanical/camera-shutter-click-08.mp3'
+        },
+        shutterSoundLength: {
+            type: Number,
+            default: 105
         }
     },
     data() {
@@ -298,7 +306,7 @@ export default {
                     this.$refs.shutter.classList.add('on');
                     setTimeout(() => {
                         this.$refs.shutter && this.$refs.shutter.classList.remove('on');
-                    }, 30*2+45);
+                    }, this.shutterSoundLength);
                 }
                 this.$emit('photoTaken', { blob, image_data_url })
             }, this.imageType);
